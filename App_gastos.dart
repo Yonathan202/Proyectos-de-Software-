@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
         title: Text(
           'Control de Gasto',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.blue,
             fontSize: 24,
           ),
         ),
@@ -77,12 +77,19 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                   backgroundColor: Colors.blue,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                 ),
                 child: Text(
                   '+ Añadir gasto',
-                  style: TextStyle(fontSize: 18, color: Colors.black),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  maxLines: 1,
+                  softWrap: false,
+                  overflow: TextOverflow.visible,
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
@@ -154,65 +161,130 @@ class AddExpenseScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('Añadir Gasto'),
+        title: Text('Añadir Gasto',
+        style: TextStyle(color: Colors.blue),),
         backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextField(
-              controller: descriptionController,
-              decoration: InputDecoration(
-                labelText: 'Descripción',
-                filled: true,
-                fillColor: Colors.white,
+          Row(
+            children: [
+              Text(
+                "Descripción:", // Texto estático siempre visible
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
-            ),
-            SizedBox(height: 10),
-            TextField(
+              SizedBox(width: 10), // Espacio entre el texto y el campo
+              Expanded( // Asegura que el campo ocupe el espacio restante
+                child: TextField(
+                  controller: descriptionController,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    labelText: 'Descripción', // Texto flotante que se mueve
+                    labelStyle: TextStyle(color: Colors.white),
+                    floatingLabelBehavior: FloatingLabelBehavior.auto,
+                    hintText: 'Ingrese la descripción', // Texto dentro del campo
+                    hintStyle: TextStyle(color: Colors.white70),
+                    filled: true,
+                    fillColor: Colors.grey[800], // Fondo oscuro
+                    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    border: OutlineInputBorder( // Bordes redondeados
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+            SizedBox(
+              width: double.infinity,
+        child: TextField(
               controller: categoryController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 labelText: 'Categoría',
+                labelStyle: TextStyle(color: Colors.white),
+                floatingLabelBehavior: FloatingLabelBehavior.auto,
+                hintText: 'Ingrese la categoria',
+                hintStyle: TextStyle(color: Colors.white70),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.grey[800],
+                contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 90),
+                border: OutlineInputBorder( // Bordes redondeados
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none,
+                ),
               ),
             ),
-            SizedBox(height: 10),
-            TextField(
+            ),
+            SizedBox(
+            width: double.infinity,
+            child: TextField(
               controller: amountController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 labelText: 'Monto',
+                labelStyle: TextStyle(color: Colors.white),
+                floatingLabelBehavior: FloatingLabelBehavior.auto,
+                hintText: 'Ingrese el monto',
+                hintStyle: TextStyle(color: Colors.white70),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.grey[800],
+                contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 90),
+                border: OutlineInputBorder( // Bordes redondeados
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none,
+                ),
               ),
               keyboardType: TextInputType.number,
             ),
-            SizedBox(height: 10),
-            TextField(
+            ),
+            SizedBox(
+            width: double.infinity,
+            child: TextField(
               controller: dateController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 labelText: 'Fecha',
+                labelStyle: TextStyle(color: Colors.white),
+                floatingLabelBehavior: FloatingLabelBehavior.auto,
+                hintText: 'Ingrese la fecha',
+                hintStyle: TextStyle(color: Colors.white70),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Colors.grey[800],
+                contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 90),
+                border: OutlineInputBorder( // Bordes redondeados
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide.none,
+                ),
               ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
+            ),
+            SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
               onPressed: () {
                 // Lógica para guardar el gasto
               },
               style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 backgroundColor: Colors.blue,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                padding: EdgeInsets.symmetric(horizontal: 130, vertical: 20),
               ),
               child: Text('Guardar',
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.white),
               ),
             ),
-          ],
+            ),
+        ],
         ),
-      ),
+    ),
     );
+
   }
 }
