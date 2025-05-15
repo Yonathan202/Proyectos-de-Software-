@@ -27,7 +27,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
     if (_formKey.currentState!.validate()) {
       print("Formulario validado correctamente");
       var dbHelper = DatabaseHelper();
-      int newId = await dbHelper.insertGasto({  // Guarda el ID generado por SQLite
+      int newId = await dbHelper.insertGasto({ 
         'descripcion': _descriptionController.text,
         'categoria': _category,
         'monto': double.parse(_amountController.text.replaceAll(RegExp(r'[^0-9.]'), '')),
